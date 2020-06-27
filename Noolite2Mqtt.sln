@@ -1,0 +1,73 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30204.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Noolite2Mqtt", "noolite2mqtt\Noolite2Mqtt.csproj", "{6701C775-9CF2-4188-867E-2F5B291E63FD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1BE81C04-9889-45DF-BC20-E8F7A6C20121} = {1BE81C04-9889-45DF-BC20-E8F7A6C20121}
+		{2CE95B08-2E20-4C9D-B4EB-ABD5E779C4E8} = {2CE95B08-2E20-4C9D-B4EB-ABD5E779C4E8}
+		{19559ED5-77C6-491F-998F-B8292774D399} = {19559ED5-77C6-491F-998F-B8292774D399}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{B3FDC23F-1991-4D49-A006-A2427B2D479B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Noolite2Mqtt.Core.Infrastructure", "Noolite2Mqtt.Core.Infrastructure\Noolite2Mqtt.Core.Infrastructure.csproj", "{5A799E54-167D-4EA8-B72A-06D53906A0BC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7CA2C73F-FD1E-44DE-9C7A-530775633A91}"
+	ProjectSection(SolutionItems) = preProject
+		.dockerignore = .dockerignore
+		.gitignore = .gitignore
+		Dockerfile = Dockerfile
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Noolite2Mqtt.Core.Plugins", "Noolite2Mqtt.Core.Plugins\Noolite2Mqtt.Core.Plugins.csproj", "{1BE81C04-9889-45DF-BC20-E8F7A6C20121}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PLugins", "PLugins", "{D94E0C33-1754-4018-8D14-27512021EE26}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Noolite2Mqtt.Plugins.Mqtt", "Noolite2Mqtt.Plugins.Mqtt\Noolite2Mqtt.Plugins.Mqtt.csproj", "{2CE95B08-2E20-4C9D-B4EB-ABD5E779C4E8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Noolite2Mqtt.Plugins.NooLite", "Noolite2Mqtt.Plugins.NooLite\Noolite2Mqtt.Plugins.NooLite.csproj", "{19559ED5-77C6-491F-998F-B8292774D399}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6701C775-9CF2-4188-867E-2F5B291E63FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6701C775-9CF2-4188-867E-2F5B291E63FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6701C775-9CF2-4188-867E-2F5B291E63FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6701C775-9CF2-4188-867E-2F5B291E63FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A799E54-167D-4EA8-B72A-06D53906A0BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A799E54-167D-4EA8-B72A-06D53906A0BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A799E54-167D-4EA8-B72A-06D53906A0BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A799E54-167D-4EA8-B72A-06D53906A0BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BE81C04-9889-45DF-BC20-E8F7A6C20121}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BE81C04-9889-45DF-BC20-E8F7A6C20121}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BE81C04-9889-45DF-BC20-E8F7A6C20121}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BE81C04-9889-45DF-BC20-E8F7A6C20121}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CE95B08-2E20-4C9D-B4EB-ABD5E779C4E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CE95B08-2E20-4C9D-B4EB-ABD5E779C4E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CE95B08-2E20-4C9D-B4EB-ABD5E779C4E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CE95B08-2E20-4C9D-B4EB-ABD5E779C4E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19559ED5-77C6-491F-998F-B8292774D399}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19559ED5-77C6-491F-998F-B8292774D399}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19559ED5-77C6-491F-998F-B8292774D399}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19559ED5-77C6-491F-998F-B8292774D399}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5A799E54-167D-4EA8-B72A-06D53906A0BC} = {B3FDC23F-1991-4D49-A006-A2427B2D479B}
+		{1BE81C04-9889-45DF-BC20-E8F7A6C20121} = {B3FDC23F-1991-4D49-A006-A2427B2D479B}
+		{2CE95B08-2E20-4C9D-B4EB-ABD5E779C4E8} = {D94E0C33-1754-4018-8D14-27512021EE26}
+		{19559ED5-77C6-491F-998F-B8292774D399} = {D94E0C33-1754-4018-8D14-27512021EE26}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {021318B8-375F-4FA5-9414-0123BC7618EF}
+	EndGlobalSection
+EndGlobal
