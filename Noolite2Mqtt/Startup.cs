@@ -58,68 +58,7 @@ namespace noolite2mqtt
                 endpoints.MapControllers();
             });
 
-            InitPlugins(app.ApplicationServices, logger);
-        }
-
-        public void InitPlugins(IServiceProvider services, ILogger logger)
-        {
-            logger.LogInformation($"init plugins");
-
-            var context = services.GetRequiredService<IServiceContext>();
-
-            try
-            {
-                // init plugins
-                var iniTasks = new List<Task>();
-                foreach (var plugin in context.GetAllPlugins())
-                {
-                    logger.LogInformation($"init plugin: {plugin.GetType().FullName}");
-
-                    try
-                    {
-                        iniTasks.Add(plugin.InitPlugin()); ;
-                    }
-                    catch (NotImplementedException ex)
-                    {
-                        logger.LogInformation(0, ex, $"{plugin.GetType().FullName} is not initialized");
-                    }
-                }
-                Task.WaitAll(iniTasks.ToArray());
-
-                // start plugins
-                var startTasks = new List<Task>();
-                foreach (var plugin in context.GetAllPlugins())
-                {
-                    logger.LogInformation($"start plugin {plugin.GetType().FullName}");
-
-                    try
-                    {
-                        startTasks.Add(plugin.StartPlugin());
-                    }
-                    catch (NotImplementedException ex)
-                    {
-                        logger.LogInformation(0, ex, $"{plugin.GetType().FullName} is not started");
-                    }
-                }
-                Task.WaitAll(startTasks.ToArray());
-
-                logger.LogInformation("all plugins are started");
-            }
-            catch (ReflectionTypeLoadException ex)
-            {
-                logger.LogError(0, ex, "error on plugins initialization");
-                foreach (var loaderException in ex.LoaderExceptions)
-                {
-                    logger.LogError(0, loaderException, loaderException.Message);
-                }
-
-                throw;
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(0, ex, "error on start plugins");
-                throw;
-            }
+            app.UsePlugins(logger);
         }
 
     }
