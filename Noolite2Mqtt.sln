@@ -31,6 +31,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Noolite2Mqtt.Plugins.Mqtt",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Noolite2Mqtt.Plugins.NooLite", "Noolite2Mqtt.Plugins.NooLite\Noolite2Mqtt.Plugins.NooLite.csproj", "{19559ED5-77C6-491F-998F-B8292774D399}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Noolite2Mqtt.Plugins.Handlers", "Noolite2Mqtt.Plugins.Handlers\Noolite2Mqtt.Plugins.Handlers.csproj", "{9ED8484E-52DC-449B-A51F-51F4803C6933}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Noolite2Mqtt.Plugins.Timer", "Noolite2Mqtt.Plugins.Timer\Noolite2Mqtt.Plugins.Timer.csproj", "{C068BEB9-5958-462A-B9AA-125810056DBE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +61,14 @@ Global
 		{19559ED5-77C6-491F-998F-B8292774D399}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19559ED5-77C6-491F-998F-B8292774D399}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19559ED5-77C6-491F-998F-B8292774D399}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9ED8484E-52DC-449B-A51F-51F4803C6933}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9ED8484E-52DC-449B-A51F-51F4803C6933}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9ED8484E-52DC-449B-A51F-51F4803C6933}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9ED8484E-52DC-449B-A51F-51F4803C6933}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C068BEB9-5958-462A-B9AA-125810056DBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C068BEB9-5958-462A-B9AA-125810056DBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C068BEB9-5958-462A-B9AA-125810056DBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C068BEB9-5958-462A-B9AA-125810056DBE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,6 +78,8 @@ Global
 		{1BE81C04-9889-45DF-BC20-E8F7A6C20121} = {B3FDC23F-1991-4D49-A006-A2427B2D479B}
 		{2CE95B08-2E20-4C9D-B4EB-ABD5E779C4E8} = {D94E0C33-1754-4018-8D14-27512021EE26}
 		{19559ED5-77C6-491F-998F-B8292774D399} = {D94E0C33-1754-4018-8D14-27512021EE26}
+		{9ED8484E-52DC-449B-A51F-51F4803C6933} = {D94E0C33-1754-4018-8D14-27512021EE26}
+		{C068BEB9-5958-462A-B9AA-125810056DBE} = {D94E0C33-1754-4018-8D14-27512021EE26}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {021318B8-375F-4FA5-9414-0123BC7618EF}

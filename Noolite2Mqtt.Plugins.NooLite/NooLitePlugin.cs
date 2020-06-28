@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Noolite2Mqtt.Core.Plugins;
 using Noolite2Mqtt.Core.Plugins.Utils;
+using Noolite2Mqtt.Plugins.Timer;
 using ThinkingHome.NooLite;
 
 namespace Noolite2Mqtt.Plugins.NooLite
@@ -108,7 +109,7 @@ namespace Noolite2Mqtt.Plugins.NooLite
             device.Dispose();
         }
 
-        //[TimerCallback(20000)]
+        [TimerCallback(60000)]
         public void Reconnect(DateTime now)
         {
             device.Open();
