@@ -29,14 +29,13 @@ namespace noolite2mqtt
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddPluginsService(Configuration);
+
             services.AddControllers();
 
             services.AddApiVersioning();
 
             services.Configure<ConsoleLifetimeOptions>(opts => opts.SuppressStatusMessages = true);
-
-            var config = new HomeConfiguration(Configuration);
-            HomeApplication.RegisterServices(services, config);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
