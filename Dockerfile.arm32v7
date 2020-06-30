@@ -23,4 +23,5 @@ FROM base AS final
 LABEL Author="Vadim Kosin <vkosin@outlook.com>"
 WORKDIR /app
 COPY --from=build /app/publish .
-ENTRYPOINT ["dotnet", "noolite2mqtt.dll"]
+#ENTRYPOINT ["dotnet", "noolite2mqtt.dll"]
+CMD ["./Noolite2Mqtt"]
