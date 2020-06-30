@@ -13,8 +13,11 @@ WORKDIR /src
 #WORKDIR "/src/."
 #RUN dotnet build "noolite2mqtt.csproj" -c Release -o /app/build
 #FROM build AS publish
+
 COPY . .
 RUN dotnet publish -c Release -r linux-arm -o /app/publish /p:LinkDuringPublish=true
+
+
 
 FROM base AS final
 LABEL Author="Vadim Kosin <vkosin@outlook.com>"

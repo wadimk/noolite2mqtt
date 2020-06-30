@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Noolite2Mqtt", "noolite2mqtt\Noolite2Mqtt.csproj", "{6701C775-9CF2-4188-867E-2F5B291E63FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Noolite2Mqtt", "Noolite2Mqtt\Noolite2Mqtt.csproj", "{6701C775-9CF2-4188-867E-2F5B291E63FD}"
 	ProjectSection(ProjectDependencies) = postProject
 		{1BE81C04-9889-45DF-BC20-E8F7A6C20121} = {1BE81C04-9889-45DF-BC20-E8F7A6C20121}
 		{2CE95B08-2E20-4C9D-B4EB-ABD5E779C4E8} = {2CE95B08-2E20-4C9D-B4EB-ABD5E779C4E8}
