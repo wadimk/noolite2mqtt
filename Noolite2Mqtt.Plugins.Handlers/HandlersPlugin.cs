@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -41,7 +40,7 @@ namespace Noolite2Mqtt.Plugins.Handlers
             Logger.LogInformation($"{temperature}");
 
             var device = devices.GetDevice(channel, temperature, humidity);
-            dynamic pl = new ExpandoObject();
+            var pl = new NoolitePayload();
             pl.Humidity = humidity;
             pl.Temperature = temperature; 
 
@@ -117,5 +116,11 @@ namespace Noolite2Mqtt.Plugins.Handlers
             }
         }
 
+    }
+
+    public class NoolitePayload
+    {
+        public int? Humidity { get; set; }
+        public decimal Temperature { get; set; }
     }
 }
