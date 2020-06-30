@@ -5,6 +5,7 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="../Noolite2Mqtt.Core.Plugins/Noolite2Mqtt.Core.Plugins.csproj" />
+    <ProjectReference Include="..\Noolite2Mqtt.Plugins.Timer\Noolite2Mqtt.Plugins.Timer.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.5" />

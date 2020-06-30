@@ -17,6 +17,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Noolite2Mqtt.Core.Infrastructure\Noolite2Mqtt.Core.Infrastructure.csproj" />
     <ProjectReference Include="..\Noolite2Mqtt.Core.Plugins\Noolite2Mqtt.Core.Plugins.csproj" />
+    <ProjectReference Include="..\Noolite2Mqtt.Plugins.Devices\Noolite2Mqtt.Plugins.Devices.csproj" />
     <ProjectReference Include="..\Noolite2Mqtt.Plugins.Handlers\Noolite2Mqtt.Plugins.Handlers.csproj" />
     <ProjectReference Include="..\Noolite2Mqtt.Plugins.Mqtt\Noolite2Mqtt.Plugins.Mqtt.csproj" />
     <ProjectReference Include="..\Noolite2Mqtt.Plugins.NooLite\Noolite2Mqtt.Plugins.NooLite.csproj" />

@@ -7,92 +7,22 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Noolite2Mqtt.Core.Plugins;
 using Noolite2Mqtt.Core.Plugins.Utils;
+using Noolite2Mqtt.Plugins.Devices;
 using Noolite2Mqtt.Plugins.Mqtt;
 using Noolite2Mqtt.Plugins.NooLite;
 using Noolite2Mqtt.Plugins.Timer;
 
 namespace Noolite2Mqtt.Plugins.Handlers
 {
-
-    public class Payload: IPayload
-    {
-        public string name { get; set; }
-        internal string node_id { get; set; }
-
-        public Payload(string deviceName)
-        {
-            name = deviceName;
-        }
-
-        internal string GetHomeAssistantTopic(string component, string type, string objectId)
-        {
-            const string discoveryPrefix = "homeassistant";
-            const string myPrefix = "noolite2mqtt";
-
-            var prefix = type == "config" ? discoveryPrefix : myPrefix;
-
-            //
-            //< component >: One of the supported MQTT components, eg. binary_sensor.
-            //    < node_id > (Optional): ID of the node providing the topic, this is not used by Home Assistant but may be used to structure the MQTT topic. The ID of the node must only consist of characters from the character class [a-zA-Z0-9_-]
-            //(alphanumerics, underscore and hyphen).
-            //    <object_id>: The ID of the device.This is only to allow for separate topics for each device and is not used for the entity_id.The ID of the device must only consist of characters from the character class [a-zA-Z0-9_-]
-            //(alphanumerics, underscore and hyphen).
-
-
-            return $"{prefix}/{component}/{node_id}/{objectId}/{type}";
-        }
-
-        public string config_topic { get; set; }
-
-    }
-
-    public interface IPayload
-    {
-        [JsonIgnore]
-        string config_topic { get; set; }
-    }
-
-    public class TemperatureSensor : Payload
-    {
-        public TemperatureSensor(string deviceName) : base(deviceName)
-        {
-            node_id = "1";
-            device_class = "temperature";
-            state_topic = GetHomeAssistantTopic("sensor", "state", $"{name}{1}");
-            config_topic = GetHomeAssistantTopic("sensor", "config", $"{name}{1}");
-            unit_of_measurement = "°C";
-            value_template = "{{ value_json.temperature}}";
-        }
-
-        public string device_class { get; set; }
-        public string state_topic { get; set; }
-        public string unit_of_measurement { get; set; }
-        public string value_template { get; set; }
-    }
-
-    public class Switch : Payload
-    {
-        public Switch(string deviceName) : base(deviceName)
-        {
-            node_id = "2";
-            state_topic = GetHomeAssistantTopic("switch", "state", $"{name}{1}");
-            command_topic = GetHomeAssistantTopic("switch", "set", $"{name}{1}");
-            config_topic = GetHomeAssistantTopic("switch", "config", $"{name}{1}");
-        }
-
-        public string state_topic { get; set; }
-        public string command_topic { get; set; }
-    }
-
     public class HandlersPlugin : PluginBase
     {
-        private List<IPayload> hass;
+        private DevicesPlugin devices;
+        private MqttPlugin mqtt;
 
         public override async Task InitPlugin()
         {
-            hass = new List<IPayload>();
-            hass.Add(new Switch("switch"));
-            hass.Add(new TemperatureSensor("temperature"));
+            mqtt = Context.Require<MqttPlugin>();
+            devices = Context.Require<DevicesPlugin>();
         }
 
         public override async Task StartPlugin()
@@ -108,14 +38,22 @@ namespace Noolite2Mqtt.Plugins.Handlers
         public void MicroclimateDataHandler(int channel, decimal temperature, int? humidity, bool lowBattery)
         {
             Logger.LogInformation($"{temperature}");
-            //Context.Require<MqttPlugin>().Publish(GetHomeAssistantTopic("binary_sensor", "state"), "value=12", false);
+
+            var device = devices.GetDevice(channel, temperature, humidity);
+
+            foreach (var payload in device.PayloadsList)
+            {
+                mqtt.TryPublish(payload.config_topic, payload.Data(temperature), false);
+            }
+
+            
         }
 
         [NooLiteCommandHandler]
         public void NooLiteCommandHandler(byte command, int channel, byte format, byte d1, byte d2, byte d3, byte d4)
         {
             Logger.LogInformation($"{command} {channel}");
-            Context.Require<MqttPlugin>().Publish("homeassistant/kitchen/temperature", "value=12", false);
+            Context.Require<MqttPlugin>().TryPublish("homeassistant/kitchen/temperature", "value=12", false);
         }
 
         [MqttMessageHandler]
@@ -136,9 +74,10 @@ namespace Noolite2Mqtt.Plugins.Handlers
         [TimerCallback(60000)]
         public void PublishConfiguration(DateTime now)
         {
-            foreach (var payload in hass)
+
+            foreach (var payload in devices.DevicesList.SelectMany(dev => dev.PayloadsList))
             {
-                Context.Require<MqttPlugin>().Publish(payload.config_topic, payload.ToJson(), false);
+                Context.Require<MqttPlugin>().TryPublish(payload.config_topic, payload.ToJson(), false);
             }
         }
 

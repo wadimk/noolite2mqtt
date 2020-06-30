@@ -14,6 +14,7 @@ using MQTTnet.Client.Receiving;
 using MQTTnet.Protocol;
 using Noolite2Mqtt.Core.Plugins;
 using Noolite2Mqtt.Core.Plugins.Utils;
+using Noolite2Mqtt.Plugins.Timer;
 
 namespace Noolite2Mqtt.Plugins.Mqtt
 {
@@ -86,17 +87,18 @@ namespace Noolite2Mqtt.Plugins.Mqtt
             }
         }
 
+        [TimerCallback(60000)]
         public void ConnectionChecking(DateTime now)
         {
             ReConnect();
         }
 
-        public void Publish(string topic, string payload, bool retain = false)
+        public void TryPublish(string topic, string payload, bool retain = false)
         {
-            Publish(topic, Encoding.UTF8.GetBytes(payload), retain);
+            TryPublish(topic, Encoding.UTF8.GetBytes(payload), retain);
         }
 
-        public void Publish(string topic, byte[] payload, bool retain = false)
+        public void TryPublish(string topic, byte[] payload, bool retain = false)
         {
             var msg = new MqttApplicationMessage() { Payload = payload, Topic = topic, QualityOfServiceLevel = MqttQualityOfServiceLevel.AtLeastOnce, Retain = retain };
 
