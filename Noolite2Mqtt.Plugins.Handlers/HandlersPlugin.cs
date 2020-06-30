@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 using Noolite2Mqtt.Core.Plugins;
 using Noolite2Mqtt.Core.Plugins.Utils;
 using Noolite2Mqtt.Plugins.Devices;
@@ -40,10 +39,13 @@ namespace Noolite2Mqtt.Plugins.Handlers
             Logger.LogInformation($"{temperature}");
 
             var device = devices.GetDevice(channel, temperature, humidity);
+            dynamic pl = new ExpandoObject();
+            pl.Humidity = humidity;
+            pl.Temperature = temperature; 
 
             foreach (var payload in device.PayloadsList)
             {
-                mqtt.TryPublish(payload.config_topic, payload.Data(temperature), false);
+                mqtt.TryPublish(payload.config_topic, payload.Data(pl), false);
             }
 
             

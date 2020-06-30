@@ -1,4 +1,6 @@
-﻿namespace Noolite2Mqtt.Plugins.Devices
+﻿using Newtonsoft.Json;
+
+namespace Noolite2Mqtt.Plugins.Devices
 {
     public class TemperatureSensor : Payload
     {
@@ -15,7 +17,7 @@
         public string device_class { get; set; }
         public override string Data(object payload)
         {
-            return "[a]";
+            return JsonConvert.SerializeObject(payload);
         }
 
         public string unit_of_measurement { get; set; }

@@ -37,6 +37,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Noolite2Mqtt.Plugins.Timer"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Noolite2Mqtt.Plugins.Devices", "Noolite2Mqtt.Plugins.Devices\Noolite2Mqtt.Plugins.Devices.csproj", "{6F8CC230-25F3-463B-AEDD-D3DC9393E49A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Noolite2Mqtt.Test", "Noolite2Mqtt.Test\Noolite2Mqtt.Test.csproj", "{38BC6696-EB29-47A9-B091-DEF893D2575C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{6F8CC230-25F3-463B-AEDD-D3DC9393E49A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F8CC230-25F3-463B-AEDD-D3DC9393E49A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F8CC230-25F3-463B-AEDD-D3DC9393E49A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38BC6696-EB29-47A9-B091-DEF893D2575C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38BC6696-EB29-47A9-B091-DEF893D2575C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38BC6696-EB29-47A9-B091-DEF893D2575C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38BC6696-EB29-47A9-B091-DEF893D2575C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

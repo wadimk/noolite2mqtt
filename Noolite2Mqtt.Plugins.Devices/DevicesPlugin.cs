@@ -31,7 +31,7 @@ namespace Noolite2Mqtt.Plugins.Devices
         {
             
             _devices.Add(new NooliteDevice(1, NooliteDeviceType.Swith));
-            _devices.Add(new NooliteDevice(1, NooliteDeviceType.TemperatureHumiditySensor));
+            _devices.Add(new NooliteDevice(2, NooliteDeviceType.TemperatureHumiditySensor));
         }
 
         public override async Task StopPlugin()
