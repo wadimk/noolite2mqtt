@@ -7,7 +7,7 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
-COPY ["noolite2mqtt.csproj", ""]
+COPY ["noolite2mqtt/noolite2mqtt.csproj", ""]
 RUN dotnet restore "./noolite2mqtt.csproj"
 COPY . .
 WORKDIR "/src/."
