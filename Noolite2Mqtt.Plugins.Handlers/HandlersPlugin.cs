@@ -17,11 +17,13 @@ namespace Noolite2Mqtt.Plugins.Handlers
     {
         private DevicesPlugin devices;
         private MqttPlugin mqtt;
+        private NooLitePlugin noolite;
 
         public override async Task InitPlugin()
         {
             mqtt = Context.Require<MqttPlugin>();
             devices = Context.Require<DevicesPlugin>();
+            noolite = Context.Require<NooLitePlugin>();
         }
 
         public override async Task StartPlugin()
@@ -55,7 +57,7 @@ namespace Noolite2Mqtt.Plugins.Handlers
         public void NooLiteCommandHandler(byte command, int channel, byte format, byte d1, byte d2, byte d3, byte d4)
         {
             Logger.LogInformation($"{command} {channel}");
-            Context.Require<MqttPlugin>().TryPublish("homeassistant/kitchen/temperature", "value=12", false);
+            mqtt.TryPublish("homeassistant/kitchen/temperature", "value=12", false);
         }
 
         [MqttMessageHandler]
@@ -63,14 +65,46 @@ namespace Noolite2Mqtt.Plugins.Handlers
         {
             var str = Encoding.UTF8.GetString(payload);
 
-            if (topic == "test")
+           var commandTopics = devices.CommandTopicList;
+
+           var device = devices.GetDevice(topic);
+
+           if (device != null)
+           {
+               SendCommand(device.Channel, str);
+           }
+        }
+
+
+        private string SendCommand(int ch, string command)
+        {
+            var adapter = noolite.Open(false);
+
+            switch (command.ToLowerInvariant())
             {
-                Logger.LogWarning($"TEST MESSAGE: {str}");
+                case "on":
+                    adapter.On(Convert.ToByte(ch));
+                    break;
+
+                case "off":
+                    adapter.Off(Convert.ToByte(ch));
+                    break;
+
+                case "bind":
+                    adapter.Bind(Convert.ToByte(ch));
+                    break;
+
+                case "unbind":
+                    adapter.UnBind(Convert.ToByte(ch));
+                    break;
+
+                default:
+                    return "error, command is not supported";
             }
-            else
-            {
-                Logger.LogInformation($"{topic}: {str}");
-            }
+
+
+            return $"{ch}: {command}";
+
         }
 
         [TimerCallback(60000)]

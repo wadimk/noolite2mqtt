@@ -33,5 +33,14 @@
         public string state_topic { get; set; }
 
         public abstract string Data(object payload);
+        public string CommandTopic()
+        {
+            if (this is INooliteCommand)
+            {
+                return ((INooliteCommand) this).command_topic;
+            }
+
+            return null;
+        }
     }
 }

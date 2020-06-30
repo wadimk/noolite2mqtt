@@ -30,7 +30,7 @@ namespace Noolite2Mqtt.Plugins.Devices
             switch (deviceType)
             {
                 case NooliteDeviceType.Swith:
-                    _payloadList.Add(new Switch("switch"));
+                    _payloadList.Add(new Switch($"switch{channel}"));
                     return;
 
                 case NooliteDeviceType.TemperatureHumiditySensor:
@@ -40,7 +40,7 @@ namespace Noolite2Mqtt.Plugins.Devices
             }
         }
 
-        public NooliteDevice(int channel)
+        public NooliteDevice(byte channel)
         {
             this.channel = channel;
         }

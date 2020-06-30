@@ -9,5 +9,7 @@ namespace Noolite2Mqtt.Plugins.Devices
         string state_topic { get; set; }
 
         string Data(object payload);
+
+        string CommandTopic();
     }
 }

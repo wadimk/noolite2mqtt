@@ -1,13 +1,13 @@
 ﻿namespace Noolite2Mqtt.Plugins.Devices
 {
-    public class Switch : Payload
+    public class Switch : Payload, INooliteCommand
     {
         public Switch(string deviceName) : base(deviceName)
         {
             node_id = "2";
-            state_topic = GetHomeAssistantTopic("switch", "state", $"{name}{1}");
-            command_topic = GetHomeAssistantTopic("switch", "set", $"{name}{1}");
-            config_topic = GetHomeAssistantTopic("switch", "config", $"{name}{1}");
+            state_topic = GetHomeAssistantTopic("switch", "state", $"{name}");
+            command_topic = GetHomeAssistantTopic("switch", "set", $"{name}");
+            config_topic = GetHomeAssistantTopic("switch", "config", $"{name}");
         }
 
         
@@ -18,4 +18,9 @@
 
         public string command_topic { get; set; }
     }
+
+    public interface INooliteCommand
+    {
+        string command_topic { get; set; }
+}
 }
