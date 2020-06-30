@@ -19,6 +19,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.dockerignore = .dockerignore
 		.gitignore = .gitignore
 		Dockerfile = Dockerfile
+		Dockerfile.arm32v7 = Dockerfile.arm32v7
 		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
@@ -37,7 +38,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Noolite2Mqtt.Plugins.Timer"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Noolite2Mqtt.Plugins.Devices", "Noolite2Mqtt.Plugins.Devices\Noolite2Mqtt.Plugins.Devices.csproj", "{6F8CC230-25F3-463B-AEDD-D3DC9393E49A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Noolite2Mqtt.Test", "Noolite2Mqtt.Test\Noolite2Mqtt.Test.csproj", "{38BC6696-EB29-47A9-B091-DEF893D2575C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Noolite2Mqtt.Test", "Noolite2Mqtt.Test\Noolite2Mqtt.Test.csproj", "{38BC6696-EB29-47A9-B091-DEF893D2575C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
