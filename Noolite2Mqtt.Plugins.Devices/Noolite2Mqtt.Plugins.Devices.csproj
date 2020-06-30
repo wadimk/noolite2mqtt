@@ -6,8 +6,4 @@
   <ItemGroup>
     <ProjectReference Include="..\Noolite2Mqtt.Core.Plugins\Noolite2Mqtt.Core.Plugins.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.2.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0" />
-  </ItemGroup>
 </Project>
