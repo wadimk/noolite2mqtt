@@ -4,7 +4,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace noolite2mqtt.Controllers
+namespace Noolite2Mqtt.Controllers
 {
     [ApiController]
     [ApiVersion("1.0")]

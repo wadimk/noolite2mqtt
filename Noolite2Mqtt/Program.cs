@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace noolite2mqtt
+namespace Noolite2Mqtt
 {
     public class Program
     {

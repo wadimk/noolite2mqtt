@@ -1,6 +1,6 @@
 using System;
 
-namespace noolite2mqtt
+namespace Noolite2Mqtt
 {
     public class WeatherForecast
     {
