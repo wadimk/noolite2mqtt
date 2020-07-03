@@ -38,8 +38,6 @@ namespace Noolite2Mqtt
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
-
             app.UseRouting();
 
             app.UseAuthorization();
