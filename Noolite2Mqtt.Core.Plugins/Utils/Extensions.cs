@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
+using Newtonsoft.Json;
 
 namespace Noolite2Mqtt.Core.Plugins.Utils
 {
@@ -13,7 +14,7 @@ namespace Noolite2Mqtt.Core.Plugins.Utils
         /// </summary>
         public static string ToJson(this object obj, string defaultValue = "")
         {
-            return obj == null ? defaultValue : obj.ToJson();
+            return obj == null ? defaultValue : JsonConvert.SerializeObject(obj);
         }
 
         #region parse
