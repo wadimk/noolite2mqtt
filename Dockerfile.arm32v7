@@ -1,9 +1,9 @@
 #See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
-FROM mcr.microsoft.com/dotnet/core/runtime:3.1-buster-slim-arm32v7 AS base
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim-arm32v7 AS base
 WORKDIR /app
-EXPOSE 80
-EXPOSE 443
+ENV ASPNETCORE_URLS=http://+:5001
+EXPOSE 5001
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster-arm32v7 AS build
 WORKDIR /src
@@ -16,8 +16,6 @@ WORKDIR /src
 
 COPY . .
 RUN dotnet publish -c Release -r linux-arm -o /app/publish /p:LinkDuringPublish=true
-
-
 
 FROM base AS final
 LABEL Author="Vadim Kosin <vkosin@outlook.com>"
