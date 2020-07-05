@@ -12,58 +12,58 @@ namespace Noolite2Mqtt.Core.Infrastructure
 {
     public class HomeApplication
     {
-        private IServiceProvider _services;
+        //private IServiceProvider _services;
 
         private ILogger _logger;
 
         private IServiceContext _context;
         
 
-        public async Task StartServices(HomeConfiguration config)
-        {
-            _services = ConfigureServices(config);
+        //public async Task StartServices(HomeConfiguration config)
+        //{
+        //    _services = ConfigureServices(config);
 
-            var loggerFactory = _services
-                .GetRequiredService<ILoggerFactory>();
+        //    var loggerFactory = _services
+        //        .GetRequiredService<ILoggerFactory>();
 
-            _logger = loggerFactory.CreateLogger<HomeApplication>();
-            _context = _services.GetRequiredService<IServiceContext>();
+        //    _logger = loggerFactory.CreateLogger<HomeApplication>();
+        //    _context = _services.GetRequiredService<IServiceContext>();
 
-            InitLanguage(config);
+        //    InitLanguage(config);
 
-            try
-            {
-                // init plugins
-                foreach (var plugin in _context.GetAllPlugins())
-                {
-                    _logger.LogInformation($"init plugin: {plugin.GetType().FullName}");
-                    await plugin.InitPlugin();
-                }
+        //    try
+        //    {
+        //        // init plugins
+        //        foreach (var plugin in _context.GetAllPlugins())
+        //        {
+        //            _logger.LogInformation($"init plugin: {plugin.GetType().FullName}");
+        //            await plugin.InitPlugin();
+        //        }
 
-                // start plugins
-                foreach (var plugin in _context.GetAllPlugins())
-                {
-                    _logger.LogInformation($"start plugin {plugin.GetType().FullName}");
-                    await plugin.StartPlugin();
-                }
+        //        // start plugins
+        //        foreach (var plugin in _context.GetAllPlugins())
+        //        {
+        //            _logger.LogInformation($"start plugin {plugin.GetType().FullName}");
+        //            await plugin.StartPlugin();
+        //        }
 
-                _logger.LogInformation("all plugins are started");
-            }
-            catch (ReflectionTypeLoadException ex)
-            {
-                _logger.LogError(0, ex, "error on plugins initialization");
-                foreach (var loaderException in ex.LoaderExceptions)
-                {
-                    _logger.LogError(0, loaderException, loaderException.Message);
-                }
-                throw;
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(0, ex, "error on start plugins");
-                throw;
-            }
-        }
+        //        _logger.LogInformation("all plugins are started");
+        //    }
+        //    catch (ReflectionTypeLoadException ex)
+        //    {
+        //        _logger.LogError(0, ex, "error on plugins initialization");
+        //        foreach (var loaderException in ex.LoaderExceptions)
+        //        {
+        //            _logger.LogError(0, loaderException, loaderException.Message);
+        //        }
+        //        throw;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        _logger.LogError(0, ex, "error on start plugins");
+        //        throw;
+        //    }
+        //}
 
         public async Task StopServices()
         {
@@ -98,14 +98,14 @@ namespace Noolite2Mqtt.Core.Infrastructure
 
         }
 
-        private static IServiceProvider ConfigureServices(HomeConfiguration config)
-        {
-            var serviceCollection = new ServiceCollection();
+        //private static IServiceProvider ConfigureServices(HomeConfiguration config)
+        //{
+        //    var serviceCollection = new ServiceCollection();
 
-            RegisterServices(serviceCollection, config);
+        //    RegisterServices(serviceCollection, config);
 
-            return serviceCollection.BuildServiceProvider();
-        }
+        //    return serviceCollection.BuildServiceProvider();
+        //}
 
         public static void RegisterServices(IServiceCollection serviceCollection, HomeConfiguration config)
         {
